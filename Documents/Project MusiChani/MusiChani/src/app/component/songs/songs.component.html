@@ -1,0 +1,48 @@
+<table>
+    <tr *ngFor="let song of songs">
+        <th>{{song.name}}</th>
+        <button (click)="song.id && playSong(song.id)">Play Song</button>
+        <button mat-raised-button color="primary" (click)="stopMusic()">Stop Music</button>
+        <!-- <button (click)="addFavoriteSong()" mat-icon-button color="warn" aria-label="Example icon button with a heart icon">
+            <mat-icon>favorite</mat-icon>
+          </button> -->
+        <audio #audioPlayer></audio>
+    </tr>
+</table>
+
+<mat-form-field appearance="fill">
+  <mat-label>Playlists</mat-label>
+  <mat-select>
+    <mat-option *ngFor="let playlist of playlists" [value]="playlist.name">
+      {{playlist.name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<table mat-table [dataSource]="songs" class="mat-elevation-z8">
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> Id </th>
+    <td mat-cell *matCellDef="let song"> {{ song.id }} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let song"> {{ song.name }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="favorite">
+    <th mat-header-cell *matHeaderCellDef> Favorite </th>
+    <td mat-cell *matCellDef="let song">
+      <button mat-icon-button color="warn" (click)="addFavoriteSong()">
+        <mat-icon>favorite_border</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="['id', 'name', 'favorite']"></tr>
+  <tr mat-row *matRowDef="let row; columns: ['id', 'name', 'favorite']"></tr>
+</table>
+

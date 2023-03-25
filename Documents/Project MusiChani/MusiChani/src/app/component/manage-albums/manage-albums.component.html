@@ -1,0 +1,43 @@
+<div class="container-fluid ps-md-0">
+    <div class="row g-0">
+        <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+        <div class="col-md-8 col-lg-6">
+            <div class="login d-flex align-items-center py-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9 col-lg-8 mx-auto">
+                            <h1 class="login-heading mb-4">Add Album</h1>
+                            <!-- Add album Form -->
+                            <form [formGroup]="registerForm" (submit)="addAlbum()">
+                              <!-- שם אלבום -->
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="floatingPassword" placeholder="Name" formControlName="name" [(ngModel)]="album.name" 
+                                    [ngClass]="{ 'is-invalid': submitted && f.name.errors }" id="inputPassword4">
+                                    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                                        <div *ngIf="f.name.errors.required">Name is required</div>
+                                    </div>
+                                    <label for="floatingPassword">Name</label>
+                                </div>
+  
+                                <!-- תאריך -->
+                                <div class="form-floating mb-3">
+                                  <input matInput [matDatepicker]="picker2000" type="datetime" class="form-control" id="floatingPassword" placeholder="publicationDate" formControlName="publicationDate" [(ngModel)]="album.publicationDate" 
+                                  [ngClass]="{ 'is-invalid': submitted && f.publicationDate.errors }" id="inputPassword4">
+                                  <mat-datepicker-toggle matIconSuffix [for]="picker2000"></mat-datepicker-toggle>
+                                  <mat-datepicker #picker2000></mat-datepicker>
+                                  <label for="floatingPassword">Publication Date</label>
+                                </div>
+  
+                                <input type="file">
+  
+                                <div class="d-grid">
+                                  <button class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" type="submit">Add Album</button>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
