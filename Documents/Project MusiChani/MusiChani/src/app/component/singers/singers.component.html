@@ -1,6 +1,19 @@
-<table>
-    <tr *ngFor="let singer of singers" (click)="beyondTheSingerPage(singer.id)">
+<!-- <div *ngFor="let singer of singers" (click)="beyondTheSingerPage(singer.id)">
+    <div class="Rectangle-462"> 
+        <br>   
+        <div><th><img [src]="singer.image" width="250px" height="250px" class="rounded-circle"></th></div>
         <mat-icon>person_add</mat-icon>
-        <th>{{singer.name}}</th>
-    </tr>
-</table>
+        <th class="Rectangle-438">{{ singer.name }}</th>
+    </div> 
+</div> -->
+
+
+<div class="responsive" *ngFor="let singer of singers" (click)="beyondTheSingerPage(singer.id)">
+    <div class="gallery">
+      <!-- <a target="_blank" href="img_mountains.jpg"> -->
+        <img [src]="singer.image" alt="Mountains" width="250" height="250" class="rounded-circle">
+      <!-- </a> -->
+      <mat-icon>person_add</mat-icon>
+      <div class="Rectangle-438">{{ singer.name }}</div>
+    </div>
+  </div>

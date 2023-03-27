@@ -1,0 +1,71 @@
+// .Rectangle-462 {
+//     margin: 10px;
+//     padding: 12px 6.5px 15.2px;
+//     border: solid 1px #707070;
+//     background-color: #fff;
+//     display: inline;
+//     background-image: url("https://firebasestorage.googleapis.com/v0/b/musichani-88db9.appspot.com/o/Image%20WEB%2FRectangle%20462.png?alt=media&token=4adf380b-8e4e-4b1d-b174-d5cb5d6716af");
+//   }
+
+//   .Rectangle-445 {
+//     width: 249px;
+//     height: 260.8px;
+//     margin: 5.5px 0;
+//   }
+
+//     // שם זמר
+//   .Rectangle-438 {
+//     width: 1920px;
+//     height: 1000px;
+//     padding: 0px 0;
+//     opacity: 0.2;
+//   }
+div.gallery {
+    border: 1px solid #ccc;
+  }
+  
+  div.gallery:hover {
+    border: 1px solid #777;
+  }
+  
+  div.gallery img {
+    width: 100%;
+    height: auto;
+  }
+  
+  div.desc {
+    padding: 15px;
+    text-align: center;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  .responsive {
+    padding: 0 6px;
+    float: left;
+    width: 24.99999%;
+  }
+  
+  @media only screen and (max-width: 700px) {
+    .responsive {
+      width: 49.99999%;
+      margin: 6px 0;
+    }
+  }
+  
+  @media only screen and (max-width: 500px) {
+    .responsive {
+      width: 100%;
+    }
+  }
+  
+  .clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+//   img {
+
+//   }

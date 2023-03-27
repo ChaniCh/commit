@@ -12,15 +12,15 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class SingerPageComponent {
   albums: Array<albums> = new Array<albums>();
-  album: albums = new albums();
-  singer: users = new users();
-  // singerId!: number;
+  // album: albums = new albums();
+  // singer: users = new users();
+  singerId = 30;
 
   constructor(private albumsService: AlbumsService, private route: ActivatedRoute, private router: Router, private usersService: UsersService) { }
 
   ngOnInit() {
-    const singerId = +this.route.snapshot.paramMap.get('singerId')!;
-    this.albumsService.getAlbumsBySingerId(singerId).subscribe(data => { this.albums = data });
+    // const singerId = +this.route.snapshot.paramMap.get('singerId')!;
+    // this.albumsService.getAlbumsBySingerId(singerId).subscribe(data => { this.albums = data });
   }
 
   // מעבר לשירי אלבום

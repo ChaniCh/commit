@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { albums } from 'src/app/classes/albums';
+import { users } from 'src/app/classes/users';
 import { AlbumsService } from 'src/app/services/albums.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { AlbumsService } from 'src/app/services/albums.service';
   styleUrls: ['./albums.component.scss']
 })
 export class AlbumsComponent {
+  @Input() singerId!: number;
 
   albums: Array<albums> = new Array<albums>();
 
