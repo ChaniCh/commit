@@ -1,6 +1,8 @@
+<div class="Rectangle-440">
 <h2>Songs:</h2>
 <ul>
-  <li *ngFor="let song of songs">
+  <li *ngFor="let song of songs" (click)="beyondTheSongPlaysPage(song.id)">
     <th>{{song.name}}</th>
 </li>
 </ul>
+</div>

@@ -12,8 +12,15 @@ export class PlaylistService {
 
   constructor(private http:HttpClient) { }
 
-  // רשימת רשימות השמעה
+  // הצגת רשימות השמעה
   getPlaylist():Observable<Array<playlist>> {
     return this.http.get<Array<playlist>>(this.url);
   }
+
+  // יצירת רשימת השמעה
+  addPlaylist(playlist: playlist):Observable<Array<playlist>> {
+    return this.http.put<Array<playlist>>(this.url, playlist);
+  }
+
+  // מחיקת רשימת השמעה 
 }

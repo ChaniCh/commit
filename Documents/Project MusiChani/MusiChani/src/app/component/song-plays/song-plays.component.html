@@ -1,0 +1,16 @@
+<!-- <ul>
+    <li *ngFor="let song of songs">
+        {{ song.name }}
+    </li>
+</ul> -->
+<div>
+<h1>{{song.name}}</h1>
+
+<mat-icon (click)="song.id && playSong(song.id)">play_arrow</mat-icon>
+
+<mat-icon (click)="stopMusic()">pause</mat-icon>
+
+<mat-icon>favorite_border</mat-icon>
+
+<audio #audioPlayer></audio>
+</div>

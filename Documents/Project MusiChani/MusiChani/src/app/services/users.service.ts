@@ -22,6 +22,16 @@ export class UsersService {
     return this.http.get<Array<users>>(this.url + '/users/getArtists');
   }
 
+  // הצגת בקשות זמרים
+  getRequests():Observable<Array<requests>> {
+    return this.http.get<Array<requests>>(this.url + '/requests');
+  }
+
+  // הוספת אמן
+  addArtist(artist: users):Observable<Array<users>> {
+    return this.http.put<Array<users>>(this.url + '/users/addUser', artist);
+  }
+
   // התחברות
   // לא נבדק
   login(email: string, password: string):Observable<users> {
@@ -33,7 +43,7 @@ export class UsersService {
     return this.http.put<Array<users>>(this.url + '/users/addUser', user);
   }
 
-  //  artistRequest הרשמה זמר
+  // artistRequest בקשת זמר
   AddRequest(request: requests):Observable<Array<requests>> {
     return this.http.put<Array<requests>>(this.url + '/requests/AddRequest', request);
   }
@@ -56,10 +66,6 @@ export class UsersService {
 
   // עדכון משתמש - פרופיל משתמש, אזור מנהל
 
-  // עדכון סטטוס מנהל
-
-  // הוספת זמר
-
   // מחיקת משתמש
   deleteUser(id: number): Observable<Array<users>> {
     return this.http.delete<Array<users>>(`${this.url}/users/deleteUser/` + id);
@@ -73,6 +79,11 @@ export class UsersService {
   // עדכון פרופיל
   updateUser(id: number, user: users):Observable<Array<users>> {
     return this.http.put<Array<users>>(`${this.url}/users/updateUser/` + id, user);
+  }
+
+  // עדכון סטטוס לבקשה
+  updateStatusRequest(requestId: number):Observable<Array<requests>> {
+    return this.http.get<Array<requests>>(this.url + '/requests/updateStatus/' + requestId);
   }
 
   // עדכון סטטוס משתמש

@@ -21,17 +21,22 @@ export class SignUpComponent {
 
   constructor(private usersService: UsersService, private formBuilder: FormBuilder, private storage: AngularFireStorage) { }
 
-  // העלאת תמונת פרופיל
-  uploadImage(event: any) {
-    const file = event.target.files[0];
-      const filePath = `image/${file.name}`;
+  // בחירת תמונת פרופיל
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
+  }
+
+  // העלאת תמונת פרופיל וקריאה לפונקציה הרשמה לאתר
+  uploadImage() {
+      const filePath = `image/${this.selectedFile.name}`;
       const ref = this.storage.ref(filePath);
-      const task = ref.put(file);
+      const task = this.storage.upload(filePath, this.selectedFile);
   
       task.snapshotChanges().pipe(
         finalize(() => {
           ref.getDownloadURL().subscribe(url => {
             this.user.image = url;
+            this.signUp();
             console.log('url:' , url);
           });
         })

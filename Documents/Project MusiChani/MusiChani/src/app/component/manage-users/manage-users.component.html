@@ -1,0 +1,175 @@
+<div class="container-fluid ps-md-0">
+  <div class="row g-0">
+      <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+      <div class="col-md-8 col-lg-6">
+          <div class="login d-flex align-items-center py-5">
+              <div class="container">
+                  <div class="row">
+                      <div class="col-md-9 col-lg-8 mx-auto">
+                          <h1 class="login-heading mb-4">הוספת תפקיד</h1>
+                          <!-- הוספת תפקיד -->
+                          <form id="form" [formGroup]="registerForm" (submit)="addJob()">
+                            <!-- שם תפקיד -->
+                              <div class="form-floating mb-3">
+                                  <input type="text" class="form-control" id="floatingPassword" placeholder="name" formControlName="name" [(ngModel)]="job.name" 
+                                  [ngClass]="{ 'is-invalid': submitted && f.name.errors }" id="inputPassword4">
+                                  <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                                      <div *ngIf="f.name.errors.required">Name is required</div>
+                                  </div>
+                                  <label for="floatingPassword">שם תפקיד</label>
+                              </div>
+                              <div class="d-grid">
+                                <button class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" type="submit">הוספת תפקיד</button>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <br><br>
+              <table>
+                <tr *ngFor="let job of jobs">
+                    <th>{{ job.name }}</th>
+                </tr>
+            </table>
+
+             <form (submit)="addJobToUser()">
+                <mat-form-field appearance="fill">
+                    <mat-label>משתמשים</mat-label>
+                    <!-- בחירת משתמש -->
+                    <mat-select [formControl]="usersSelect" [(ngModel)]="jobToUser.userId">
+                        <mat-option *ngFor="let user of users" [value]="user.id">
+                            {{user.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <br>
+                <!-- בחירת תפקיד -->
+                <mat-form-field appearance="fill">
+                    <mat-label>Favorite food</mat-label>
+                    <mat-select [formControl]="jobsSelect" [(ngModel)]="jobToUser.jobId">
+                        <mat-option *ngFor="let job of jobs" [value]="job.id">
+                            {{job.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+
+
+ <button class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" type="submit">Add Song to singer</button>
+
+</form>
+
+<button mat-raised-button (click)="openUserTableDialog()">Open User Table Dialog</button>
+
+<!-- הוספת זמר -->
+<form [formGroup]="registerForm" (submit)="uploadImage()">
+    <!-- שם משתמש -->
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="floatingPassword" placeholder="name" formControlName="name" [(ngModel)]="user.name" 
+        [ngClass]="{ 'is-invalid': submitted && f.name.errors }" id="inputPassword4">
+        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+            <div *ngIf="f.name.errors.required">Name is required</div>
+        </div>
+        <label for="floatingPassword">Name</label>
+    </div>
+    <!-- תמונה -->
+    <input type="file" (change)="onFileSelected($event)">
+    <button class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" type="submit">הוסף זמר</button>
+</form>
+
+<!-- <button mat-button class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" (click)="openDialog()">Open Table</button> -->
+
+<!-- טבלת משתמשים -->
+<!-- <div *ngIf="isTableOpen">
+<table class="table align-middle mb-0 bg-white">
+    <thead class="bg-light">
+        <tr>
+            <th>שם משתמש</th> -->
+            <!-- <th>תפקיד</th> -->
+            <!-- <th>סטטוס</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users">
+            <td>
+                <div class="d-flex align-items-center">
+                  <td><img [src]="user.image" alt="" style="width: 45px; height: 45px"class="rounded-circle"></td> -->
+                  <!-- <td>{{ user.name }}</td>
+                    <td>{{ user.status }}</td> -->
+                   <!-- <div class="ms-3">
+                        <p class="fw-bold mb-1">{{ user.name }}</p>
+                    </div> -->
+                <!--  </div>
+                <div class="d-flex align-items-center">
+                    <div class="ms-3"> -->
+                         
+                  <!--  </div> -->
+                <!-- </div>
+            
+        </tr>
+    </tbody>
+</table>
+</div> -->
+<!-- <div mat-dialog-actions>
+    <button mat-button (click)="close()">Close</button>
+  </div> -->
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="requests">
+  
+      <!-- Position Column -->
+      <!-- <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+      </ng-container> -->
+
+      <!-- תאריך -->
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> תאריך </th>
+        <td mat-cell *matCellDef="let request"> {{ request.date }} </td>
+      </ng-container>
+  
+      <!-- שם -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> שם </th>
+        <td mat-cell *matCellDef="let request"> {{ request.name }} </td>
+      </ng-container>
+  
+      <!-- אימייל -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let request"> {{ request.email }} </td>
+      </ng-container>
+  
+      <!-- טלפון -->
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef> טלפון </th>
+        <td mat-cell *matCellDef="let request"> {{ request.phone }} </td>
+      </ng-container>
+
+      <!-- סטטוס -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> סטטוס </th>
+        <td mat-cell *matCellDef="let request"><mat-slide-toggle [(ngModel)]="request.status" (change)="updateStatusRequest(request.id)">
+            {{ request.status ? 'Active' : 'Inactive' }}
+          </mat-slide-toggle> </td>
+        <mat-slide-toggle>Slide me!</mat-slide-toggle>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="['date', 'name', 'email', 'phone', 'status']"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['date','name', 'email', 'phone', 'status']"></tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                   showFirstLastButtons
+                   aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>
+
+  <br><br>
+  <!-- <mat-slide-toggle [(ngModel)]="statusValue" (change)="onToggleChange()"></mat-slide-toggle> -->

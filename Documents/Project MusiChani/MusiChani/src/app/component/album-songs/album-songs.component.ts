@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { songs } from 'src/app/classes/songs';
 import { AlbumsService } from 'src/app/services/albums.service';
 
@@ -12,11 +12,16 @@ export class AlbumSongsComponent {
 
   songs: Array<songs> = new Array<songs>();
 
-  constructor(private albumsService:AlbumsService, private route:ActivatedRoute) { }
+  constructor(private albumsService:AlbumsService, private route:ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     const albumId = +this.route.snapshot.paramMap.get('albumId')!;
     this.albumsService.getSongs(albumId).subscribe(data => {this.songs = data}, error => {alert('error')});
+  }
+
+  // מעבר לשיר
+  beyondTheSongPlaysPage(songId: number | undefined) {
+    this.router.navigate(['songPlays', songId]);
   }
 
 }

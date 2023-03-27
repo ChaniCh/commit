@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+// import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { finalize } from 'rxjs';
 import { songs } from 'src/app/classes/songs';
 import { songToSinger } from 'src/app/classes/songToSinger';
+import { tags } from 'src/app/classes/tags';
 import { users } from 'src/app/classes/users';
 import { SongsService } from 'src/app/services/songs.service';
+import { TagsService } from 'src/app/services/tags.service';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -16,32 +19,30 @@ import { UsersService } from 'src/app/services/users.service';
 export class ManageSongsComponent {
   songs: Array<songs> = new Array<songs>();
   artists: Array<users> = new Array<users>();
+  tags: Array<tags> = new Array<tags>();
   songToSingers: Array<songToSinger> = new Array<songToSinger>();
   song: songs = new songs();
   user: users = new users();
+  tag: tags = new tags();
   songToSinger: songToSinger = new songToSinger();
   submitted = false;
   registerForm:any = FormGroup;
   artistsSelect = new FormControl('');
   songsSelect = new FormControl<users | undefined>(undefined);
-  // selectedSinger = null;
+  selectedSong!: File;
+  selectedImage!: File;
+  ckeConfig: any;
+  tagExists!: boolean;
+  // editor = ClassicEditor;
 
   constructor(private songsService: SongsService, private storage: AngularFireStorage, private formBuilder: FormBuilder,
-    private usersService: UsersService) { }
-
-  get f() {
-    return this.registerForm.controls;
-  }
-
-  // onSubmit() {
-  //   this.submitted = true;
-  //   this.saveSong(this.song);
-  //   this.song = new songs(); // Reset the form
-    // this.selectedSinger = null;
-  // }
+    private usersService: UsersService, private tagsService: TagsService) { }
+    
+    get f() {
+      return this.registerForm.controls;
+    }
 
   ngOnInit() {
-    this.songsService.getSongToSinger().subscribe(data => { this.songToSingers = data }, error => { console.log('error:', error)});
     this.usersService.getArtists().subscribe(data => { this.artists = data });
     this.songsService.getSongs().subscribe(data => { this.songs = data });
 
@@ -52,48 +53,86 @@ export class ManageSongsComponent {
     });
   }
 
-  // הוספת שיר
-  // addSong() {
-  //   this.song.status = true;
-  //   this.songsService.addSong(this.song).subscribe(data => { this.songs = data }, error => { alert('error') });
-  // }
-
-  // saveSong(song: songs) {
-  //   this.song.status = true;
-  //   this.songsService.addSong(song).subscribe(data => {
-  //     this.songToSinger.singerId = 31;
-  //     this.songToSinger.songId = 1;
-  //     this.songsService.addSongToSinger(this.songToSinger).subscribe(data => { this.songToSingers = data }, error => { console.log('error')});
-  //   })
-  // }
-
-  // העלאת שיר
-  // uploadSong(event: any) {
-  //   const file = event.target.files[0];
-  //     const filePath = `songs/${file.name}`;
-  //     const ref = this.storage.ref(filePath);
-  //     const task = ref.put(file);
-
-  //     task.snapshotChanges().pipe(
-  //       finalize(() => {
-  //         ref.getDownloadURL().subscribe(url => {
-  //           this.song.fileLocation = url;
-  //           // this.songsService.addSong(this.song).subscribe(data => { this.songs = data }, error => { console.log('error', error) });
-  //           console.log('url:' , url);
-  //         });
-  //       })
-  //     )
-  //     .subscribe();
-  //   } 
-
-  // הוספת זמר לשיר
-  addSongToSinger() {
-    // this.songToSinger.songId = this.song.id // (this.songsSelect.value as songs).id?[0]:0;
-    // this.songToSinger.singerId = this.user.id //(this.artistsSelect.value as users).id?[0]:0;
-    console.log('songId' + this.songToSinger.songId);
-    console.log('singerId' + this.songToSinger.singerId);
-    this.songsService.addSongToSinger(this.songToSinger).subscribe(data => { this.songToSingers = data }, error => { console.log('error', error) });
+  // בחירת שיר
+  onSongSelected(event: any) {
+    this.selectedSong = event.target.files[0];
   }
 
-  // מחיקת שיר
+  // בחירת תמונה
+  onImageSelected(event: any) {
+    this.selectedImage = event.target.files[0];
+  }
+
+  addSong() {
+    // if(this.selectedSong && this.selectedImage) {
+      // העלאת שיר
+      const songFilePath = `songs/${this.selectedSong.name}`;
+      const songRef = this.storage.ref(songFilePath);
+      const songTask = this.storage.upload(songFilePath, this.selectedSong);
+
+      // העלאת תמונה
+      const imageFilePath = `image/${this.selectedSong.name}`;
+      const imageRef = this.storage.ref(imageFilePath);
+      const imageTask = this.storage.upload(imageFilePath, this.selectedImage);
+
+      songTask.snapshotChanges().pipe(
+        finalize(() => {
+          songRef.getDownloadURL().subscribe(url => {
+            this.song.song = url;
+            // this.saveSong();
+            console.log('url:' , url);
+          });
+        })
+      ).subscribe();
+
+      imageTask.snapshotChanges().pipe(
+        finalize(() => {
+          imageRef.getDownloadURL().subscribe(url => {
+            this.song.image = url;
+            this.saveSong();
+            console.log('url:' , url);
+          });
+        })
+      ).subscribe();
+    }
+  // }
+
+  saveSong() {
+    // this.submitted = true;
+    // if(this.registerForm.invalid) {
+    //   return;
+    // }
+
+    this.song.status = true;
+    this.songsService.addSong(this.song).subscribe(data => { this.songs = data }, error => { console.log('error', error) });
+  }
+
+    // הוספת זמר לשיר
+    addSongToSinger() {
+      this.songsService.addSongToSinger(this.songToSinger).subscribe(data => {
+        this.songToSingers = data }, error => { console.log('error', error) });
+    }
+    
+    // מחיקת שיר
+    deleteSong(songId: number) {
+      this.songsService.deleteSong(songId).subscribe(data => { this.songs = data }, error => { console.log('error', error) });
+    }
+
+    // בדיקה האם תגית קיימת במערכת
+    checkTagExists() {
+      const tag = this.f.tag.value;
+      if(tag) {
+        this.tagsService.checkTagExists(tag).subscribe(result => { this.tagExists = result; }, error => { console.log('error', error) });
+      }
+    }
+
+    // הוספת תגית
+    addTag() {
+      this.submitted = true;
+      if(this.registerForm.invalid || this.tagExists) {
+        return;
+      }
+      this.tag.status = true;
+      this.tagsService.addTag(this.tag).subscribe(data => { this.tags = data }, error => { alert('error') });
+    }
 }

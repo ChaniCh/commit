@@ -111,7 +111,7 @@ export class AdminAreaComponent {
         task.snapshotChanges().pipe(
           finalize(() => {
             ref.getDownloadURL().subscribe(url => {
-              this.song.fileLocation = url;
+              this.song.song = url;
               this.songsService.addSong(this.song).subscribe(data => { this.songs = data }, error => { console.log('error', error) });
               console.log('url:' , url);
             });
@@ -145,6 +145,8 @@ export class AdminAreaComponent {
       this.tag.status = true;
       this.tagsService.addTag(this.tag).subscribe(data => { this.tags = data }, error => { alert('error') });
     }
+
+    // הוספת תפקיד 
 
 }
 

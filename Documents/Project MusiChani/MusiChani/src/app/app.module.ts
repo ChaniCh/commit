@@ -29,11 +29,16 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { SingersComponent } from './component/singers/singers.component';
 import { NewSongsComponent } from './component/new-songs/new-songs.component';
 import { ManageAlbumsComponent } from './component/manage-albums/manage-albums.component';
 import { ManageSongsComponent } from './component/manage-songs/manage-songs.component';
 import { SingerPageComponent } from './component/singer-page/singer-page.component';
+import { SongPlaysComponent } from './component/song-plays/song-plays.component';
+import { ManageUsersComponent } from './component/manage-users/manage-users.component';
+import { UsersTableComponent } from './component/users-table/users-table.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDHclsUQ_d7pgHFstL6jU-mfYhphXVV34g",
@@ -61,7 +66,10 @@ const firebaseConfig = {
     NewSongsComponent,
     ManageAlbumsComponent,
     ManageSongsComponent,
-    SingerPageComponent
+    SingerPageComponent,
+    SongPlaysComponent,
+    ManageUsersComponent,
+    UsersTableComponent
   ],
   imports: [
     BrowserModule,
@@ -81,7 +89,9 @@ const firebaseConfig = {
     MatSelectModule,
     MatCardModule,
     MatPaginatorModule,
-    MatTableModule
+    MatTableModule,
+    MatDialogModule,
+    MatSlideToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

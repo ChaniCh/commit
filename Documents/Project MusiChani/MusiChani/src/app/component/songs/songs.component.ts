@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { Router } from '@angular/router';
 import { finalize } from 'rxjs';
 import { favoriteSongs } from 'src/app/classes/favoriteSongs';
 import { followListeningSongs } from 'src/app/classes/followListeningSongs';
@@ -27,7 +28,8 @@ export class SongsComponent {
   followers: Array<followListeningSongs> = new Array<followListeningSongs>();
   isFavorite = false;
 
-  constructor(private songsService:SongsService, private usersService: UsersService, private playlistService: PlaylistService) { }
+  constructor(private songsService:SongsService, private usersService: UsersService, private playlistService: PlaylistService,
+    private router: Router) { }
 
   ngOnInit() {
     this.songsService.getSongs().subscribe(songs => { this.songs = songs }, error => { alert('error') });
@@ -54,6 +56,11 @@ export class SongsComponent {
   // עצירת שיר
   stopMusic() {
     this.audioPlayer.nativeElement.pause();
+  }
+
+  // מעבר לשיר
+  beyondTheSongPlaysPage(songId: number | undefined) {
+    this.router.navigate(['songPlays', songId]);
   }
 
 }

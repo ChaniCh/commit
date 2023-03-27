@@ -8,7 +8,7 @@
                         <div class="col-md-9 col-lg-8 mx-auto">
                             <h1 class="login-heading mb-4">Sign up</h1>
                             <!-- Sign In Form -->
-                            <form [formGroup]="registerForm" (submit)="signUp()">
+                            <form [formGroup]="registerForm" (submit)="uploadImage()">
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control" id="floatingPassword" placeholder="name" formControlName="name" [(ngModel)]="user.name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" id="inputPassword4">
                                     <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
@@ -42,7 +42,7 @@
                                   </section>
 
                                   <!-- <input type="file"> -->
-                                  <input type="file" (change)=" uploadImage($event)">
+                                  <input type="file" (change)="onFileSelected($event)">
 
 
 

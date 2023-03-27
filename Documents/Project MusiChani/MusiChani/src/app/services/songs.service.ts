@@ -66,7 +66,12 @@ export class SongsService {
 
   // מחיקת שיר
   deleteSong(id: number):Observable<Array<songs>> {
-    return this.http.delete<Array<songs>>(this.url + '/songs/deleteSong' +id);
+    return this.http.delete<Array<songs>>(this.url + '/songs/deleteSong/' +id);
+  }
+
+  // הצגת שיר לפי קוד
+  getSongById(songId: number):Observable<songs> {
+    return this.http.get<songs>(this.url + '/songs/getById/' + songId);
   }
 
 }

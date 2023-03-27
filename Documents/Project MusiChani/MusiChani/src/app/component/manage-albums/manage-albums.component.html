@@ -41,3 +41,59 @@
                     </div>
                   </div>
                 </div>
+
+
+<!-- <form (submit)="addAlbumToSinger()">
+                <div>
+                  <mat-form-field>
+                    <mat-label>Select a singer</mat-label>
+                    <mat-select [(value)]="selectedSinger" [(ngModel)]="albumToSinger.singerId" name="selectedSinger">
+                      <mat-option *ngFor="let singer of singers" [value]="singer">{{ singer.name }}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <br>
+                  <mat-form-field>
+                    <mat-label>Select an album</mat-label>
+                    <mat-select [(value)]="selectedAlbum" [(ngModel)]="albumToSinger.albumId" name="selectedAlbum">
+                      <mat-option *ngFor="let album of albums" [value]="album">{{ album.name }}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <br>
+                  <button type="submit" mat-raised-button color="primary">Add Album to Singer</button>
+                </div>
+</form> -->
+
+<form (submit)="addAlbumToSinger()">
+
+  <h4>Basic mat-select</h4>
+<mat-form-field appearance="fill">
+  <mat-label>Favorite food</mat-label>
+  <mat-select [formControl]="singerSelect" [(ngModel)]="albumToSinger.singerId">
+    <mat-option *ngFor="let singer of singers" [value]="singer.id">
+      {{singer.name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<br>
+<h4>Basic mat-select</h4>
+<mat-form-field appearance="fill">
+  <mat-label>Favorite food</mat-label>
+  <mat-select [formControl]="albumSelect" [(ngModel)]="albumToSinger.albumId">
+    <mat-option *ngFor="let album of albums" [value]="album.id">
+      {{album.name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<br>
+<button class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" type="submit">Add Album to singer</button>
+</form>
+
+<br>
+
+<table>
+  <tr *ngFor="let albumToSinger of albumToSingers">
+      <th>{{albumToSinger.id}}</th>
+      <th>{{albumToSinger.albumId}}</th>
+      <th>{{albumToSinger.singerId}}</th>
+  </tr>
+</table>
