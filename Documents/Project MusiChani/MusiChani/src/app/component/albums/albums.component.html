@@ -1,7 +1,17 @@
-<h2>Albums</h2>
-
-<div *ngFor="let album of albums">
-  <a [routerLink]="['/albumSongs', album.id]">{{ album.name }}</a>
+<div div class="content">
+  <!-- <h2>Albums</h2> -->
+<div class="container">
+<div class="rectangle" *ngFor="let album of albums">
+  
+  <div class="image-container">
+  <img [src]="album.image" alt="Image">
 </div>
+<a [routerLink]="['/albumSongs', album.id]">{{ album.name }}</a>
 
-{{singerId}}
+
+<!-- </div> -->
+    </div>
+  
+  
+</div>
+</div>

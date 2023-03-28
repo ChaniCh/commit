@@ -15,7 +15,7 @@
 <audio #audioPlayer></audio>
 </div>
 
-<div class="rectangle">
+<div class="content">
     <mat-slider min="0" max="100" showTickMarks discrete>
         <input matSliderThumb>
     </mat-slider> 
@@ -46,11 +46,16 @@
     <!-- דיווח על זכויות יוצרים -->
     <mat-icon>copyright</mat-icon>
     <!-- הוספת שיר למועדפים -->
-    <mat-icon>favorite_border</mat-icon>
+    <div style="position: relative;">
+    <div (mouseover)="showMessage = true" (mouseout)="showMessage = false">
+        <!-- <button mat-icon-button matTooltip="Add to Favorites"> -->
+        <mat-icon>favorite_border</mat-icon>
+    <!-- </button> -->
+        <div *ngIf="showMessage" class="message">הוספה למועדפים</div>
+    </div></div>
     <!-- הוספת שיר לפלייליסט -->
     <mat-icon>add_circle_outline</mat-icon>
     <img [src]="song.image" alt="" class="Rectangle-30">
-</div>
+<!-- </div> -->
 <!-- <div class="Rectangle-36"></div> -->
 <!-- <i style="font-size:24px;color: #ffffff;" class="fa">&#xf028;</i> -->
-

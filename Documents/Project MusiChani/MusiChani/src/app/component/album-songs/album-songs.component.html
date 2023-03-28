@@ -2,7 +2,9 @@
 <h2>Songs:</h2>
 <ul>
   <li *ngFor="let song of songs" (click)="beyondTheSongPlaysPage(song.id)">
-    <th>{{song.name}}</th>
+    <th>{{ song.name }}</th>
+    <img [src]="song.image">
 </li>
 </ul>
 </div>
+

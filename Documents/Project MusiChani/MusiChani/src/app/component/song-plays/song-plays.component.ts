@@ -16,6 +16,7 @@ export class SongPlaysComponent {
   song: songs = new songs();
   follower: followListeningSongs = new followListeningSongs();
   followers: Array<followListeningSongs> = new Array<followListeningSongs>();
+  showMessage: boolean = false;
 
   constructor(private songsService: SongsService, private route: ActivatedRoute, private router: Router) { }
 

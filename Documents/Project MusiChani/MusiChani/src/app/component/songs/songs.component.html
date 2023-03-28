@@ -1,4 +1,4 @@
-<table>
+<table class="content">
     <tr *ngFor="let song of songs" (click)="beyondTheSongPlaysPage(song.id)">
         <th>{{song.name}}</th>
         <button (click)="song.id && playSong(song.id)">Play Song</button>

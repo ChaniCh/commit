@@ -8,6 +8,7 @@
     padding: 12px 70px 0 50px;
     background-color: #000000;
     background-image: url("https://firebasestorage.googleapis.com/v0/b/musichani-88db9.appspot.com/o/Image%20WEB%2FRectangle%2036.png?alt=media&token=f38d89d4-efcb-48ec-8d18-9c5b6db379de");
+    z-index: 2;
   }
 
   .Group-19 {
@@ -15,6 +16,7 @@
     height: 15px;
     margin: 26px 26.8px 6px 0;
     background-image: url("https://firebasestorage.googleapis.com/v0/b/musichani-88db9.appspot.com/o/Image%20WEB%2FGroup%2019.png?alt=media&token=1832f593-b4f0-4c2a-868b-deb6f34ddfa7");
+    z-index: 2;
   }
 
 //   .Icon-awesome-volume-up {
@@ -26,31 +28,68 @@
 
   mat-slider {
     width: 250px;
+    z-index: 2;
   }
 
   .Rectangle-30 {
     margin: 0 0 0 66px;
     width: 12%; 
     height: auto; 
+    z-index: 2;
   }
 
-  .rectangle {
+  // .rectangle {
+  //   display: flex;
+  //   align-items: center;
+  //   max-width: 1920px;
+  //   margin: 23.5px 0 0;
+  //   padding: 12px 70px 0 50px;
+  //   height: 100px;
+  //   width: 100%;
+  //   background-color: #000000;
+  //   z-index: 2;
+  // }
+
+  .content {
     display: flex;
     align-items: center;
     max-width: 1920px;
     margin: 23.5px 0 0;
     padding: 12px 70px 0 50px;
-    height: 100px;
+    height: 90px;
     width: 100%;
     background-color: #000000;
+    //position: relative;
+    position: fixed;
+    bottom: 0; /* Add this line */
+    // height: 100%;
+    z-index: 2; /* Adjust this value */
   }
 
   .fa {
     margin-left: 10px;
+    z-index: 2;
   }
 
   mat-icon {
     color: aliceblue;
+    z-index: 2;
+  }
+
+  .message {
+    position: absolute;
+    bottom: 30px; /* adjust the distance from the top of the parent element */
+    left: 0;
+    width: 120px;
+    height: 10px;
+    background-color: #ffffffd8;
+    border: 1px solid #000000;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1; /* make sure the panel is above other elements */
   }
 
 //   .Ellipse-8 {
