@@ -14,3 +14,43 @@
 
 <audio #audioPlayer></audio>
 </div>
+
+<div class="rectangle">
+    <mat-slider min="0" max="100" showTickMarks discrete>
+        <input matSliderThumb>
+    </mat-slider> 
+    <!-- ווליום -->
+    <mat-icon style="margin-right: 200px;">volume_up</mat-icon>
+    <!-- ווליום מושתק -->
+    <!-- <mat-icon>volume_off</mat-icon> -->
+    <div style="display: flex; justify-content: center; margin-right: 200px;">
+    <!-- שיר קודם -->
+    <mat-icon style="margin-right: 10px;">skip_previous</mat-icon>
+    <!-- הרצה קדימה -->
+    <mat-icon style="margin-right: 10px;">fast_rewind</mat-icon>
+    <!-- הרצה 30 שניות קדימה -->
+    <mat-icon style="margin-right: 10px;">replay_30</mat-icon>
+    <!-- paush song -->
+    <mat-icon style="margin-right: 10px;">pause_circle_outline</mat-icon>
+    <!-- play song -->
+    <mat-icon style="margin-right: 10px;">play_circle_outline</mat-icon>
+    <!-- הרצה 30 שניות אחורה -->
+    <mat-icon style="margin-right: 10px;">forward_30</mat-icon>
+    <!-- הרצה אחורה -->
+    <mat-icon style="margin-right: 10px;">fast_forward</mat-icon>
+    <!-- השיר הבא -->
+    <mat-icon style="margin-right: 10px;">skip_next</mat-icon>
+    </div>
+    
+    <div style="font-size:22px; color: #ffffff; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">{{ song.name }}</div>
+    <!-- דיווח על זכויות יוצרים -->
+    <mat-icon>copyright</mat-icon>
+    <!-- הוספת שיר למועדפים -->
+    <mat-icon>favorite_border</mat-icon>
+    <!-- הוספת שיר לפלייליסט -->
+    <mat-icon>add_circle_outline</mat-icon>
+    <img [src]="song.image" alt="" class="Rectangle-30">
+</div>
+<!-- <div class="Rectangle-36"></div> -->
+<!-- <i style="font-size:24px;color: #ffffff;" class="fa">&#xf028;</i> -->
+

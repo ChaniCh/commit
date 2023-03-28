@@ -31,6 +31,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSliderModule } from '@angular/material/slider';
 import { SingersComponent } from './component/singers/singers.component';
 import { NewSongsComponent } from './component/new-songs/new-songs.component';
 import { ManageAlbumsComponent } from './component/manage-albums/manage-albums.component';
@@ -91,7 +92,8 @@ const firebaseConfig = {
     MatPaginatorModule,
     MatTableModule,
     MatDialogModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]
