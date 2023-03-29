@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { albums } from 'src/app/classes/albums';
 import { songs } from 'src/app/classes/songs';
 import { AlbumsService } from 'src/app/services/albums.service';
 
@@ -11,6 +12,8 @@ import { AlbumsService } from 'src/app/services/albums.service';
 export class AlbumSongsComponent {
 
   songs: Array<songs> = new Array<songs>();
+  albums: Array<albums> = new Array<albums>();
+  album: albums = new albums();
 
   constructor(private albumsService:AlbumsService, private route:ActivatedRoute, private router: Router) { }
 

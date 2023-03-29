@@ -1,16 +1,37 @@
-<div class="container" ><nav>
+<div class="container"><nav>
     <ul>
-      <div>
-        <div class="Rectangle-2"><a routerLink="/adminArea"></a></div>
-        <div class="Rectangle-3"><a routerLink="/albums"><span> אלבומים </span></a></div>
-        <div class="Rectangle-2"><a routerLink="/singers">singers</a></div>
-        <div class="Rectangle-4"><a routerLink="/login">login</a></div>
-        <div class="Rectangle-5"><a routerLink="/signUp">sign-up</a></div>
-        <div class="Rectangle-6"><a routerLink="/songs">songs</a></div>
-        <div class="Rectangle-437"><a routerLink="/manageSongs">manage songs</a></div>
-        <div class="Rectangle-2"><a routerLink="/manageAlbums">manage albums</a></div>
-        <div class="Rectangle-2"><a routerLink="/manageUsers">manage users</a></div>
+      <div class="long-rectangle">
+        <div class="circle-container">
+          <ng-container *ngIf="usersService.jobId === 2">
+        <div class="circle" routerLink="/adminArea">
+          <div class="circle-text">מנהל</div>
+        </div></ng-container>
+        <div class="circle" routerLink="/albums">
+          <div class="circle-text" style="font-size:15px; color: #000000; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">אלבומים</div>
+        </div>
+        <div class="circle" routerLink="/singers">
+        <button class="button"><div class="circle-text">אמנים</div></button>
       </div>
+      <div class="circle" routerLink="/login">
+        <div class="circle-text">התחברות</div>
+      </div>
+      <div class="circle" routerLink="/signUp">
+        <div class="circle-text">הרשמה</div>
+      </div>
+      <div class="circle" routerLink="/songs">
+        <div class="circle-text">שירים</div>
+      </div>
+      <div class="circle" routerLink="/manageSongs">
+        <div class="circle-text">ניהול שירים</div>
+      </div>
+      <div class="circle" routerLink="/manageAlbums">
+        <div class="circle-text">ניהול אלבומים</div>
+      </div>
+      <div class="circle" routerLink="/manageUsers">
+        <div class="circle-text">ניהול משתמשים</div>
+      </div>
+      </div>
+    </div>
     </ul>
   </nav>
 </div>

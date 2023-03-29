@@ -40,6 +40,7 @@ import { SingerPageComponent } from './component/singer-page/singer-page.compone
 import { SongPlaysComponent } from './component/song-plays/song-plays.component';
 import { ManageUsersComponent } from './component/manage-users/manage-users.component';
 import { UsersTableComponent } from './component/users-table/users-table.component';
+import { UserAreaComponent } from './component/user-area/user-area.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDHclsUQ_d7pgHFstL6jU-mfYhphXVV34g",
@@ -70,7 +71,8 @@ const firebaseConfig = {
     SingerPageComponent,
     SongPlaysComponent,
     ManageUsersComponent,
-    UsersTableComponent
+    UsersTableComponent,
+    UserAreaComponent
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,8 @@ import { users } from '../classes/users';
   providedIn: 'root'
 })
 export class UsersService {
+  jobId!: number;
+
   url = 'http://localhost:55940/api';
 
   constructor(private http: HttpClient) { }
@@ -84,6 +86,11 @@ export class UsersService {
   // עדכון סטטוס לבקשה
   updateStatusRequest(requestId: number):Observable<Array<requests>> {
     return this.http.get<Array<requests>>(this.url + '/requests/updateStatus/' + requestId);
+  }
+
+  // קבלת קוד תפקיד לפי קוד משתמש
+  getUserJobId(userId: number):Observable<number> {
+    return this.http.get<number>(this.url + '/users/getUserJobId/' + userId);
   }
 
   // עדכון סטטוס משתמש

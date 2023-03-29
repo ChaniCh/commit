@@ -31,9 +31,11 @@
     <!-- הרצה 30 שניות קדימה -->
     <mat-icon style="margin-right: 10px;">replay_30</mat-icon>
     <!-- paush song -->
-    <mat-icon style="margin-right: 10px;">pause_circle_outline</mat-icon>
+    <!-- <mat-icon style="margin-right: 10px;">pause_circle_outline</mat-icon> -->
     <!-- play song -->
-    <mat-icon style="margin-right: 10px;">play_circle_outline</mat-icon>
+    <div>
+        <mat-icon (click)="playSong(song.id!)" style="margin-right: 10px;">{{ isPlaying ? 'play_circle_outline' : 'pause_circle_outline'}}</mat-icon>
+    </div>
     <!-- הרצה 30 שניות אחורה -->
     <mat-icon style="margin-right: 10px;">forward_30</mat-icon>
     <!-- הרצה אחורה -->

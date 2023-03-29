@@ -1,32 +1,3 @@
-// .Rectangle-2 {
-//     width: 128px;
-//     height: 37px;
-//     margin: 79.8px 0 46px;
-//     padding: 8px 34px 8px 36px;
-//     opacity: 0.26;
-//     border-radius: 18.5px;
-//     background-color: #fff;
-//     background-image: url("https://firebasestorage.googleapis.com/v0/b/musichani-88db9.appspot.com/o/Image%20WEB%2FRectangle%207.png?alt=media&token=8d0ab7db-b586-4c00-88b3-8d53d7301ee4");
-//   }
-
-//   .Rectangle-440 {
-//     width: 1920px;
-//     height: 1079px;
-//     padding: 70px 0 69px;
-//     opacity: 0.2;
-//     background-image: url("https://firebasestorage.googleapis.com/v0/b/musichani-88db9.appspot.com/o/Image%20WEB%2F%D7%A2%D7%99%D7%A6%D7%95%D7%91%20%D7%9C%D7%9C%D7%90%20%D7%A9%D7%9D.png?alt=media&token=8f2c40a8-ef06-493a-91c1-fd20b4c5966b")
-//   }
-
-// .Rectangle-442 {
-//   width: 100%;
-//   max-width: 1620px;
-//   height: 900px;
-//   padding: 67px 0 70px;
-//   //opacity: 0.3;
-//  background-image: url("https://firebasestorage.googleapis.com/v0/b/musichani-88db9.appspot.com/o/Image%20WEB%2FRectangle%20438.png?alt=media&token=b1be70a8-3c8f-49eb-9e0b-1b95d76b63d7");
-//   background-color:black;
-// }
-
 .container {
   position: fixed;
   top: 0;
@@ -38,71 +9,23 @@
   padding: 67px 0 70px;
   //opacity: 0.3;
   bottom: 0;
-  background-image: url("https://firebasestorage.googleapis.com/v0/b/musichani-88db9.appspot.com/o/Image%20WEB%2FRectangle%20438.png?alt=media&token=b1be70a8-3c8f-49eb-9e0b-1b95d76b63d7");
+  // background-image: url("https://firebasestorage.googleapis.com/v0/b/musichani-88db9.appspot.com/o/Image%20WEB%2F%D7%A2%D7%99%D7%A6%D7%95%D7%91%20%D7%9C%D7%9C%D7%90%20%D7%A9%D7%9D.png?alt=media&token=8f2c40a8-ef06-493a-91c1-fd20b4c5966b");
+  // background-image: url("https://firebasestorage.googleapis.com/v0/b/musichani-88db9.appspot.com/o/Image%20WEB%2FRectangle%20438.png?alt=media&token=b1be70a8-3c8f-49eb-9e0b-1b95d76b63d7");
   background-color: black;
   z-index: 0;
 }
 
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 20px;
+}
 
 .Group-6797 {
   width: 128px;
   height: 547.6px;
   margin: 81.1px 71px 90.4px 129.5px;
-}
-
-.Rectangle-2 {
-  width: 100px;
-  height: 25px;
-  margin: 79.8px 0 46px;
-  padding: 8px 12px;
-  opacity: 0.26;
-  border-radius: 18.5px;
-  background-color: #fff;
-  // z-index: 2;
-}
-
-.Rectangle-3 {
-  width: 100px;
-  height: 25px;
-  margin: 46px 0 42px;
-  padding: 8px 12px;
-  opacity: 0.26;
-  border-radius: 18.5px;
-  background-color: #fff;
-  // z-index: 2;
-}
-
-.Rectangle-4 {
-  width: 100px;
-  height: 25px;
-  margin: 46px 0 42px;
-  padding: 8px 12px;
-  opacity: 0.26;
-  border-radius: 18.5px;
-  background-color: #fff;
-  // z-index: 2;
-}
-
-.Rectangle-5 {
-  width: 100px;
-  height: 25px;
-  margin: 42px 0 41px;
-  padding: 8px 12px;
-  opacity: 0.26;
-  border-radius: 18.5px;
-  background-color: #fff;
-  // z-index: 2;
-}
-
-.Rectangle-6 {
-  width: 100px;
-  height: 25px;
-  margin: 41px 0 33.8px;
-  padding: 8px 12px;
-  opacity: 0.26;
-  border-radius: 18.5px;
-  background-color: #fff;
-  z-index: 1;
 }
 
 .Rectangle-437 {
@@ -134,22 +57,46 @@ nav {
   background-color: #fff;
 }
 
-// :host {
-//   width: 50%;
-// }
+.circle {
+  width: 80px;
+  height: 25px;
+  background-color: #ffffff;
+  border-radius: 50px;
+  margin-bottom: 10px;
+  margin-left: 50px;
+  // opacity: 0.3;
+}
 
-// :host {             // host targets selector: 'home'
+.button {
+  width: 80px;
+  height: 25px;
+  background-color: #ffffff;
+  border-radius: 50px;
+  margin-bottom: 10px;
+  margin-left: 50px;
+}
 
-//   // display: block;
-//   left: 0;
+.circle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 150px;
+} 
 
-//   width: 200px;    // takes parent width        
-  
-//  // widht: 200px   // screen of having 1000px of width
+.circle-text {
+  align-self: center;
+  color: rgb(0, 0, 0);
+  font-size: 15px;
+  line-height: 25px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  text-align: center;
+}
 
-
-//   height: 20%;   // takes parent height    
-      
-//  // height: 1000px  // screen of having 1000px of height
-// }
-
+.long-rectangle {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 100%;
+  background-color: #000000;
+}

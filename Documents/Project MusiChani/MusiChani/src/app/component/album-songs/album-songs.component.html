@@ -1,10 +1,39 @@
-<div class="Rectangle-440">
+<!-- <div class="content">
 <h2>Songs:</h2>
 <ul>
   <li *ngFor="let song of songs" (click)="beyondTheSongPlaysPage(song.id)">
-    <th>{{ song.name }}</th>
-    <img [src]="song.image">
-</li>
+    <div class="rectangle"></div> -->
+    <!-- <th>{{ song.name }}</th> -->
+    <!-- <img class="" [src]="song.image"> -->
+<!-- </li>
 </ul>
+</div> -->
+
+<div div class="content">
+  <div class="container">
+    <mat-icon>favorite_border</mat-icon>
+    <div class="rectangle" *ngFor="let song of songs">
+      <div class="image-container">
+        <img [src]="song.image" alt="Image">
+        
+      </div>
+      
+      <div>{{ song.name }}</div>
+    </div>
+  </div>
 </div>
+<!-- 
+<div div class="content">
+  <div class="container">
+    <div class="rectangle" *ngFor="let song of songs">
+      <div class="image-container">
+        <img [src]="song.image" alt="Image">
+        <div class="triangle"></div>
+      </div>
+      
+      <div>{{ song.name }}</div>
+    </div>
+  </div>
+</div> -->
+
 

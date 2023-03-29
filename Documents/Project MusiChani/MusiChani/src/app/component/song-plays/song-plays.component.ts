@@ -17,6 +17,7 @@ export class SongPlaysComponent {
   follower: followListeningSongs = new followListeningSongs();
   followers: Array<followListeningSongs> = new Array<followListeningSongs>();
   showMessage: boolean = false;
+  isPlaying = false;
 
   constructor(private songsService: SongsService, private route: ActivatedRoute, private router: Router) { }
 
@@ -25,17 +26,16 @@ export class SongPlaysComponent {
     const songId = +this.route.snapshot.paramMap.get('songId')!;
     this.songsService.getSongById(songId).subscribe(data => { this.song = data }, error => { console.log('error', error) });
   }
-
+  // this.isPlaying = true; // this.follower.userId = 1;
   // שמיעת שיר והוספת מעקב שיר
   playSong(songId: number):void {
     this.songsService.getSongUrl(songId).subscribe(url => { this.audioPlayer.nativeElement.src = url;
       console.log(url)
     this.audioPlayer.nativeElement.play(); }, error => { alert('error') });
-    this.follower.userId = 1;
     this.follower.songId = songId;
     this.songsService.addFollower(this.follower).subscribe(data => { this.followers = data }, error => { console.log('error', error) });
   }
-
+// this.isPlaying = false;
    // עצירת שיר
    stopMusic() {
     this.audioPlayer.nativeElement.pause();
